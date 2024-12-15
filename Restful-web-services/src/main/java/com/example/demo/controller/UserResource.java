@@ -4,6 +4,9 @@ import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +38,7 @@ public class UserResource {
 		return userDaoService.findAll();
 	}
 	
-	@GetMapping("/users/{id}")
+	/*  @GetMapping("/users/{id}")
 	public User findOne(@PathVariable("id") Integer id) {
 		User user =  userDaoService.findOne(id);
 		if(user == null) {
@@ -45,8 +48,22 @@ public class UserResource {
 			return user;
 		}
 	}
+	 */
 	
 	
+	//using Hateoas
+		@GetMapping("/users/{id}")
+		public EntityModel<User> findOneWithHateoas(@PathVariable("id") Integer id) {
+			User user =  userDaoService.findOne(id);
+			if(user == null) {
+				throw new UserNotFoundException(id);
+			}
+
+			EntityModel<User> entityModel = EntityModel.of(user);
+			WebMvcLinkBuilder link = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+			entityModel.add(link.withRel("all-users"));
+			return entityModel;
+		}
 
 	@PostMapping("/users")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user, BindingResult bindingResult) {
