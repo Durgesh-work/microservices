@@ -2,6 +2,7 @@ package com.example.demo.controller.filteringController;
 
 import org.hibernate.annotations.Comment;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,10 +15,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"field1", "field2"})
+@JsonFilter("SomeBeanFilter")
 public class SomeBean {
 
-	
 	private String field1;
 	private String field2;
 	private String field3;
