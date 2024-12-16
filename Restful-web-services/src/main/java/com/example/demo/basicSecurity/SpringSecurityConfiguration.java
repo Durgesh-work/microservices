@@ -16,7 +16,11 @@ public class SpringSecurityConfiguration {
 	    // Allow requests to be authenticated
 	    http.authorizeHttpRequests(auth -> auth.anyRequest().authenticated());
 
-	    http.formLogin(withDefaults());
+	    // Use HTTP Basic Authentication
+	    http.httpBasic(withDefaults());
+
+	    // Disable form-based login
+	    http.formLogin().disable();
 
 	    // Disable CSRF for simplicity (only for testing or APIs)
 	    http.csrf().disable();
