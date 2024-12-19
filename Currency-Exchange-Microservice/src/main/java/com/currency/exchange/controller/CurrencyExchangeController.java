@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.currency.exchange.configuration.ConfigurationForProperties;
 import com.currency.exchange.entity.CurrencyExchange;
+import com.currency.exchange.repository.CurrencyExchagneRepo;
 
 @RestController
 public class CurrencyExchangeController {
+	
+	@Autowired
+	private CurrencyExchagneRepo exchagneRepo;
 	
 	@Autowired
 	private Environment environment;
@@ -33,7 +37,7 @@ public class CurrencyExchangeController {
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public CurrencyExchange retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to) {
-		CurrencyExchange currencyExchange= CurrencyExchange.builder().id(1000L).from(from).to(to).conversionMultiple(BigDecimal.valueOf(50)).build();
+		CurrencyExchange currencyExchange= exchagneRepo.findByFromAndTo(from, to);
 		currencyExchange.setEnvironment( environment.getProperty("local.server.port"));
 		
 		return currencyExchange;
