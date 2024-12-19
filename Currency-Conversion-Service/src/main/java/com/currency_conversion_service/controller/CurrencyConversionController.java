@@ -19,9 +19,6 @@ import com.currency_conversion_service.proxyFeign.CurrencyExchangeFeignProxy;
 public class CurrencyConversionController {
 	
 	@Autowired
-	private Environment environment;
-	
-	@Autowired
 	private CurrencyExchangeFeignProxy currencyExchangeFeignProxy;
 	
 	@GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
@@ -42,7 +39,7 @@ public class CurrencyConversionController {
 									quantity,
 									currencyConversion.getConversionMultiple(),
 									quantity.multiply(currencyConversion.getConversionMultiple()),
-									environment.getProperty("local.server.port")
+									currencyConversion.getEnvironment()
 				);
 	}
 	
@@ -59,7 +56,7 @@ public class CurrencyConversionController {
 									quantity,
 									currencyConversion.getConversionMultiple(),
 									quantity.multiply(currencyConversion.getConversionMultiple()),
-									environment.getProperty("local.server.port")
+									currencyConversion.getEnvironment()
 				);
 	}
 }
