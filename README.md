@@ -27,6 +27,11 @@ Port: 9411
 <b>1. spring cloud config server: (to check if the config server is fetching configuration data from local git repo)</b><br>
 http://localhost:8888/currency-exchange-microservice/dev <br>
 http://localhost:8888/limits-service/dev
+
+<b>2. Step by Step instructions is provided in the troubleshooting guide to help you troubleshoot frequently occurring problems.
+(Using the Chrome Browser is recommended)</b><br>
+COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3/blob/main/03.microservices/01-step-by-step-changes/readme.md#eureka---step-19-to-21 
 </p>
+
 
 
