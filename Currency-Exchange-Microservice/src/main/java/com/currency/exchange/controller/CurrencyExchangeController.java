@@ -38,6 +38,9 @@ public class CurrencyExchangeController {
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public CurrencyExchange retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to) {
 		CurrencyExchange currencyExchange= exchagneRepo.findByFromAndTo(from, to);
+		if(currencyExchange == null) {
+			throw new RuntimeException("Unable to find data for: "+ from +" to "+to);
+		}
 		currencyExchange.setEnvironment( environment.getProperty("local.server.port"));
 		
 		return currencyExchange;
