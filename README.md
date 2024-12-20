@@ -33,5 +33,15 @@ http://localhost:8888/limits-service/dev
 COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3/blob/main/03.microservices/01-step-by-step-changes/readme.md#eureka---step-19-to-21 
 </p>
 
+<h2>Process of creating instances manually: </h2>
+<p>
+1) select "Run Configurations..." from left side of stop button.<br>
+2) create duplicate entry of target project<br>
+3) in "Arguments" tab, in "VM arguments" input box, type "-Dserver.port=8001"<br>
+4) click on Apply<br>
+5) click on Run
+  
+</p>
+
 
 
