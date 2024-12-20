@@ -40,8 +40,39 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
 3) in "Arguments" tab, in "VM arguments" input box, type "-Dserver.port=8001"<br>
 4) click on Apply<br>
 5) click on Run
-  
 </p>
 
+<h2> URL for API-Gateway: </h2>
+<p>
+ <h4> Initial </h4>
+
+- http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+
+<h4> Lower Case </h4>
+
+- http://localhost:8765/currency-exchange/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+
+
+<h4> Custom Routes </h4>
+
+- http://localhost:8765/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/10
+</p>
 
 
