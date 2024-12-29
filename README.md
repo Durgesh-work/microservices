@@ -75,4 +75,11 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
 - http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/10
 </p>
 
+<h2> Resilience Circuit Breaker: </h2>
+<p>
+ <p> we can use Cygwin terminal to send multiple requests to API, to check the Circuit breaker working </p>
+ 
+- watch -n 0.1 curl http://localhost:8000/sample-api2
+</p>
+
 
