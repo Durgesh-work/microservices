@@ -36,10 +36,11 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
 <h2> Local git repo for spring config server: </h2>
 <p>
  1. create "application-name.properties" file in local git repository.<br>
-    Example: limits-service.properties, limits-service-dev.properties.
- 2. provide configurations for the targeted application in the properties file
+    Example: limits-service.properties, limits-service-dev.properties.<br>
+ 2. provide configurations for the targeted application in the properties file<br>
     Example: In "limits-service-dev.properties", we are providing "limits-service.minimum=1
-limits-service.maximum=1000"
+    limits-service.maximum=1000"<br>
+3. Local git data is uploaded on "Master branch" in git of this remote repo. 
 </p>
 
 <h2>Process of creating instances manually: </h2>
