@@ -131,6 +131,19 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
 
     ```
   here, 1.0 in management.tracing.sampling.probability means 100% logs are being tracked by zipkin.
+
+- we need to add support for Fiegn client, so that we can trace request which are fired using Fiegn client.<br>
+  we need to add following dependacy in Currency-conversion-service, because Currency-conversion-service is using Fiegn client to call Currency-exchange-microservice's API.
+
+  ```
+	<!-- COMMON CHANGES + -->
+	<!-- Enables tracing of REST API calls made using Feign - V3 ONLY-->
+	<dependency>
+		<groupId>io.github.openfeign</groupId>
+		<artifactId>feign-micrometer</artifactId>
+	</dependency>
+  ```
+  
  </p>
 
 
