@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import com.currency.exchange.repository.CurrencyExchagneRepo;
 
 @RestController
 public class CurrencyExchangeController {
+	
+	private Logger logger = LoggerFactory.getLogger(CurrencyExchangeController.class);
 	
 	@Autowired
 	private CurrencyExchagneRepo exchagneRepo;
@@ -37,6 +41,8 @@ public class CurrencyExchangeController {
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public CurrencyExchange retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to) {
+		logger.info("retrieveExchangeValue() called with {} to {}",from, to);
+		
 		CurrencyExchange currencyExchange= exchagneRepo.findByFromAndTo(from, to);
 		if(currencyExchange == null) {
 			throw new RuntimeException("Unable to find data for: "+ from +" to "+to);
