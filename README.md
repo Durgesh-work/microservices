@@ -92,4 +92,46 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
 - watch -n 0.1 curl http://localhost:8000/sample-api2
 </p>
 
+<h2> Zipkin </h2>
+ <p>
+  
+- in28Minute git repo: https://github.com/in28minutes/spring-microservices-v3/blob/main/v3-upgrade.md <br>
+- rather than creating a project for Zipkin, we use global docker image "openzipkin/zipkin". <br>
+  <b>docker run -p 9411:9411 openzipkin/zipkin:2.23</b>
+- url: localhost:9411
+- dependacies: add these dependacies in the microservices (spring boot applications)
+  
+   ```
+   
+   <dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-observation</artifactId>
+		</dependency>
+
+		<!-- OPTION 1: Open Telemetry as Bridge (RECOMMENDED) -->
+		<!-- Open Telemetry 
+    - Simplified Observability (metrics, logs, and traces) -->
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-tracing-bridge-otel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.opentelemetry</groupId>
+			<artifactId>opentelemetry-exporter-zipkin</artifactId>
+		</dependency>
+  
+   ```
+   
+- add configurations in application.properties:
+    ```
+    management.tracing.sampling.probability=1.0
+    logging.pattern.level=%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]
+
+    ```
+  here, 1.0 in management.tracing.sampling.probability means 100% logs are being tracked by zipkin.
+ </p>
+
+
 
