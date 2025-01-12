@@ -33,6 +33,15 @@ http://localhost:8888/limits-service/dev
 COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3/blob/main/03.microservices/01-step-by-step-changes/readme.md#eureka---step-19-to-21 
 </p>
 
+<h2> Local git repo for spring config server: </h2>
+<p>
+ 1. create "application-name.properties" file in local git repository.<br>
+    Example: limits-service.properties, limits-service-dev.properties.
+ 2. provide configurations for the targeted application in the properties file
+    Example: In "limits-service-dev.properties", we are providing "limits-service.minimum=1
+limits-service.maximum=1000"
+</p>
+
 <h2>Process of creating instances manually: </h2>
 <p>
 1) select "Run Configurations..." from left side of stop button.<br>
