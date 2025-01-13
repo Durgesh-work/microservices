@@ -25,6 +25,8 @@ public class ApiGatewayConfiguration {
 							.route(routeFunction)
 							.route(p-> p.path("/currency-exchange/**")
 											.uri("lb://CURRENCY-EXCHANGE-MICROSERVICE"))
+							.route(p-> p.path("/currency-conversion/**")
+									.uri("lb://CURRENCY-CONVERSION-SERVICE"))
 							.route(p-> p.path("/currency-conversion-feign/**")
 											.uri("lb://CURRENCY-CONVERSION-SERVICE"))
 							.route(p-> p.path("/currency-conversion-new/**")
