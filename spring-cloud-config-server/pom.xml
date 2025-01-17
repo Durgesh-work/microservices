@@ -59,6 +59,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>dbdurgesh-microservices/${project.artifactId}:${project.version} </name>
+					</image>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

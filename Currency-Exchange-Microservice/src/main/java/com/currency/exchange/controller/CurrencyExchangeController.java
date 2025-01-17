@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.currency.exchange.configuration.ConfigurationForProperties;
 import com.currency.exchange.entity.CurrencyExchange;
 import com.currency.exchange.repository.CurrencyExchagneRepo;
 
@@ -27,17 +26,6 @@ public class CurrencyExchangeController {
 	@Autowired
 	private Environment environment;
 
-	@Autowired
-	private ConfigurationForProperties configurationForProperties;
-	
-	@GetMapping("/currencyExchange/demo")
-	public Map<String, Integer> demo(){
-		Map<String, Integer> map =  new LinkedHashMap<String, Integer>();
-		map.put("Minimum" , configurationForProperties.getMinimum());
-		map.put("Maximum" , configurationForProperties.getMaximum());
-		
-		return map;
-	}
 	
 	@GetMapping("/currency-exchange/from/{from}/to/{to}")
 	public CurrencyExchange retrieveExchangeValue(@PathVariable("from") String from, @PathVariable("to") String to) {
