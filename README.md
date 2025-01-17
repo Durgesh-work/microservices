@@ -146,5 +146,38 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
   
  </p>
 
+<h2>Docker Network for microservices</h2>
+<p>
+If we want our microservices in Docker images to communicate with each other, we need to create a Docker network, and make all the microservices and related applications to run under the same network. <br>
+<b>steps:</b><br>
+
+- create a Docker network
+
+ ```
+docker network create eureka-network
+```
+
+- In all eureka client microservices: In Application.properties file, replace 'localhost:<eureka-server-port-number>' to 'eureka-server:<eureka-server-port-number>' ('eureka-server' will be the container name of 'Eureka-Naming-Registry-Service' microservice. "http://eureka-server:8762/eureka/" will be the address of eureka-server in docker network, and all the eureka clients will be finding eureka discovery server on this address to get registered.)
+  
+- add 'Dockerfile' file in all the microservices
+
+- create docker files of all the microservices independatly
+
+```
+docker build -t eureka-server:v1 .
+docker build -t api_gateway:v1 .
+docker build -t currency-exchange-microservice:v1 .
+docker build -t currenct-conversion-service:v1 .
+```
+
+- Run all the microservice in the same network, that we have created.
+
+```
+docker run --net eureka-network --name eureka-server -d -p 8762:8762 eureka-server:v1
+docker run --net eureka-network --name api_gateway -d -p 8765:8765 api_gateway:v1
+docker run --net eureka-network --name currency-exchange-microservice -d -p 8000:8000 currency-exchange-microservice:v1
+docker run --net eureka-network --name currency-conversion-service -d -p 8100:8100 currency-conversion-service:v1
+```
+</p>
 
 
