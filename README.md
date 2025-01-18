@@ -125,6 +125,7 @@ COMPLETE DEBUGGING GUIDE: https://github.com/in28minutes/spring-microservices-v3
    ```
    
 - add configurations in application.properties:
+  
     ```
     management.tracing.sampling.probability=1.0
     logging.pattern.level=%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]
@@ -185,6 +186,7 @@ docker run --net eureka-network --name currency-conversion-service -d -p 8100:81
 	
 - if we are using docker containers to run our applications, we need to tell our microservices "where to find zipkin and the address of the zipkin.".
 - we need to add following configurations into each microservice's application.properties file.
+  
 ```
 management.zipkin.tracing.endpoint=http://zipkin:9411/api/v2/spans
 management.tracing.enabled=true
