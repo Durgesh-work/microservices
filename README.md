@@ -180,4 +180,20 @@ docker run --net eureka-network --name currency-conversion-service -d -p 8100:81
 ```
 </p>
 
+<h2>Make microservices zipkin compatible.</h2>
+<p>
+	
+- if we are using docker containers to run our applications, we need to tell our microservices "where to find zipkin and the address of the zipkin.".
+- we need to add following configurations into each microservice's application.properties file.
+```
+management.zipkin.tracing.endpoint=http://zipkin:9411/api/v2/spans
+management.tracing.enabled=true
+```
+Here in "http://zipkin:9411/api/v2/spans", 'zipkin' is the container name for "openzipkin/zipkin:2.23" docker image. <br><br>
 
+- Run "openzipkin/zipkin:2.23" in the same docker network as other microservices.
+
+```
+docker run --net eureka-network --name zipkin -d -p 9411:9411 openzipkin/zipkin:2.23
+```
+</p>
