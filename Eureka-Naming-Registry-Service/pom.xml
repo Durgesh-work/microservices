@@ -63,11 +63,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<image>
-						<name>dbdurgesh-microservices/eureka-naming-registry-service:v1 </name>
-					</image>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
